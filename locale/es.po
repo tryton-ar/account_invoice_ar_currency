@@ -1,0 +1,39 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.invoice.update_currency.start,currency:"
+msgid "Currency"
+msgstr "Moneda"
+
+msgctxt "field:company.company,currency_invoice_out:"
+msgid "Currency for invoice"
+msgstr "Moneda en facturas de venta"
+
+msgctxt "field:company.company,force_currency_invoice_out:"
+msgid "Set currency for customer invoice"
+msgstr "Definir moneda para facturas de venta"
+
+msgctxt "help:company.company,force_currency_invoice_out:"
+msgid "Force specific currency for customer invoice."
+msgstr "Forzar una moneda determinada para las facturas de venta"
+
+msgctxt "model:account.invoice.update_currency.start,name:"
+msgid "Invoice Update Currency Start"
+msgstr "Modificar moneda - Inicio"
+
+msgctxt "model:ir.action,name:wiz_account_invoice_update_currency"
+msgid "Update Currency"
+msgstr "Modificar moneda"
+
+msgctxt "view:account.invoice:"
+msgid "Update Currency"
+msgstr "Modificar moneda"
+
+msgctxt "wizard_button:account.invoice.update_currency,start,end:"
+msgid "Cancel"
+msgstr "Cancelar"
+
+msgctxt "wizard_button:account.invoice.update_currency,start,update:"
+msgid "Update"
+msgstr "Modificar"

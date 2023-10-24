@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<tryton>
+    <data>
+
+        <!-- Invoice -->
+
+        <record model="ir.ui.view" id="invoice_view_form">
+            <field name="model">account.invoice</field>
+            <field name="inherit" ref="account_invoice.invoice_view_form"/>
+            <field name="name">invoice_form</field>
+        </record>
+
+        <record model="ir.model.button" id="invoice_update_currency_button">
+            <field name="name">update_currency</field>
+            <field name="model" search="[('model', '=', 'account.invoice')]"/>
+        </record>
+
+        <!-- Invoice Update Currency Wizard-->
+
+        <record model="ir.ui.view" id="update_currency_start_view_form">
+            <field name="model">account.invoice.update_currency.start</field>
+            <field name="type">form</field>
+            <field name="name">invoice_update_currency_start_form</field>
+        </record>
+
+        <record model="ir.action.wizard" id="wiz_account_invoice_update_currency">
+            <field name="name">Update Currency</field>
+            <field name="wiz_name">account.invoice.update_currency</field>
+            <field name="model">account.invoice</field>
+        </record>
+
+    </data>
+</tryton>
