@@ -36,6 +36,9 @@ class Invoice(metaclass=PoolMeta):
             to_currency = invoice.company.currency_invoice_out
             if invoice.currency == to_currency:
                 continue
+            if invoice.pos and invoice.pos.pos_type == 'electronic' and \
+                    invoice.pos.pyafipws_electronic_invoice_service == 'wsfex':
+                continue
             invoice.change_currency(to_currency)
         super().validate_invoice(invoices)
 
@@ -87,6 +90,10 @@ class InvoiceUpdateCurrency(Wizard):
         Invoice = pool.get('account.invoice')
 
         invoice = Invoice(Transaction().context['active_id'])
+        # Export POS: do not change currency
+        if invoice.pos and invoice.pos.pos_type == 'electronic' and \
+                invoice.pos.pyafipws_electronic_invoice_service == 'wsfex':
+            return 'end'
         if invoice.currency != self.start.currency:
             invoice.change_currency(self.start.currency)
 
