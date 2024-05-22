@@ -3,7 +3,11 @@
     <xpath expr="/form/notebook/page[@id='invoice']" position="inside">
         <label name="force_currency_invoice_out"/>
         <field name="force_currency_invoice_out"/>
-        <label name="currency_invoice_out"/>
-        <field name="currency_invoice_out"/>
+        <group col="4" colspan="2" id="force_currency_options">
+            <label name="currency_invoice_out"/>
+            <field name="currency_invoice_out"/>
+            <label name="exclude_export_conversion"/>
+            <field name="exclude_export_conversion"/>
+        </group>
     </xpath>
 </data>

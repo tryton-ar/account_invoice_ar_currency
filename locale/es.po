@@ -14,9 +14,17 @@ msgctxt "field:company.company,force_currency_invoice_out:"
 msgid "Set currency for customer invoice"
 msgstr "Definir moneda para facturas de venta"
 
+msgctxt "field:company.company,exclude_export_conversion:"
+msgid "Exclude conversion in Export invoices"
+msgstr "Excluir facturas de exportación"
+
 msgctxt "help:company.company,force_currency_invoice_out:"
 msgid "Force specific currency for customer invoice."
 msgstr "Forzar una moneda determinada para las facturas de venta"
+
+msgctxt "help:company.company,exclude_export_conversion:"
+msgid "Exclude currency conversion in Export invoices."
+msgstr "Excluir las facturas de exportación de la conversión de moneda."
 
 msgctxt "model:account.invoice.update_currency.start,name:"
 msgid "Invoice Update Currency Start"
