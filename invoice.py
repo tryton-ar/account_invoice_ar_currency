@@ -37,7 +37,8 @@ class Invoice(metaclass=PoolMeta):
         if self.type == 'in' or \
                 self.company.force_currency_invoice_out is False:
             return
-        if int(self.invoice_type.invoice_type) in [19, 20, 21] and \
+        if self.invoice_type and \
+                int(self.invoice_type.invoice_type) in [19, 20, 21] and \
                 self.company.exclude_export_conversion is True:
             return
         if self.pos and self.pos.pos_type == 'electronic' and \
