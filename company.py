@@ -19,7 +19,17 @@ class Company(metaclass=PoolMeta):
             'invisible': ~Bool(Eval('force_currency_invoice_out')),
             'required': Bool(Eval('force_currency_invoice_out')),
             })
+    exclude_export_conversion = fields.Boolean(
+        "Exclude conversion in Export invoices",
+        states={
+            'invisible': ~Bool(Eval('force_currency_invoice_out')),
+            },
+        help="Exclude currency conversion in Export invoices.")
 
     @classmethod
     def default_force_currency_invoice_out(cls):
         return False
+
+    @classmethod
+    def default_exclude_export_conversion(cls):
+        return True

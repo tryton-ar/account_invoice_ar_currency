@@ -30,17 +30,22 @@ class Invoice(metaclass=PoolMeta):
     @classmethod
     def validate_invoice(cls, invoices):
         for invoice in invoices:
-            if invoice.type == 'in' or \
-                    invoice.company.force_currency_invoice_out is False:
-                continue
-            to_currency = invoice.company.currency_invoice_out
-            if invoice.currency == to_currency:
-                continue
-            if invoice.pos and invoice.pos.pos_type == 'electronic' and \
-                    invoice.pos.pyafipws_electronic_invoice_service == 'wsfex':
-                continue
-            invoice.change_currency(to_currency)
+            invoice.check_currency_change()
         super().validate_invoice(invoices)
+
+    def check_currency_change(self):
+        if self.type == 'in' or \
+                self.company.force_currency_invoice_out is False:
+            return
+        if int(self.invoice_type.invoice_type) in [19, 20, 21] and \
+                self.company.exclude_export_conversion is True:
+            return
+        if self.pos and self.pos.pos_type == 'electronic' and \
+                self.pos.pyafipws_electronic_invoice_service == 'wsfex':
+            return
+        if self.currency == self.company.currency_invoice_out:
+            return
+        self.change_currency(self.company.currency_invoice_out)
 
     def change_currency(self, to_currency):
         pool = Pool()
@@ -61,8 +66,8 @@ class Invoice(metaclass=PoolMeta):
             InvoiceLine.save(lines_to_save)
 
         self.currency = to_currency
-        self.currency_rate = (self.company.currency.rate /
-            to_currency.rate)
+        self.currency_rate = (
+            self.company.currency.rate / to_currency.rate)
         self.save()
 
 
