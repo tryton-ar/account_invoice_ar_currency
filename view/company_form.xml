@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <data>
-    <xpath expr="/form/notebook/page[@id='invoice']" position="inside">
+    <xpath expr="/form/notebook/page[@id='accounting']/separator[@id='invoice']" position="after">
         <label name="force_currency_invoice_out"/>
         <field name="force_currency_invoice_out"/>
         <group col="4" colspan="2" id="force_currency_options">
