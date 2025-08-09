@@ -1,7 +1,8 @@
 account_invoice_ar_currency
 ===========================
 
-The account_invoice_ar_currency module of the Tryton application platform.
+The account_invoice_ar_currency module lets change the currency in invoices
+before validating or posting.
 
 Installing
 ----------
